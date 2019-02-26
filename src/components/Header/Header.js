@@ -13,6 +13,7 @@ const LogoImage = styled.img`
 const LinkList = styled.ul`
     display: flex;
     justify-content: space-around;
+    list-style-type: none;
     width: 100%;
 `
 
