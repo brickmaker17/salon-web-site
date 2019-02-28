@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import Logo from '../../images/LogoAlpha.png';
 import { Link } from "react-router-dom";
 
+const test = window.addEventListener('scroll', ()=> console.log(Math.ceil(window.scrollY)));    
+
 const HeadWrapper = styled.div`
+    top: 0;
+    position: sticky;
     background-color: cadetblue;
     display: flex;
 `
@@ -19,6 +23,7 @@ const LinkList = styled.ul`
 `
 
 const Header = () => {
+    console.log(test, 'window');
     return (
         <HeadWrapper>
             <LogoImage src={Logo} alt='' />

@@ -14,12 +14,13 @@ const slideInFromLeft = keyframes`
 const AppWrapper = styled.div`
   background-color: #b2ccff;
   animation: .5s ${slideInFromLeft} ease-out;
-  height: 100vh;
+  height: 200vh;
 `
 
 
 
 class App extends Component {
+
   render() {
     return (
       <AppWrapper>
