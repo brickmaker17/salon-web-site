@@ -21,6 +21,9 @@ const LinkList = styled.ul`
     list-style-type: none;
     width: 100%;
 `
+const StyledLink = styled(Link)`
+    text-decoration: none;
+`
 
 const Header = () => {
     console.log(test, 'window');
@@ -29,19 +32,19 @@ const Header = () => {
             <LogoImage src={Logo} alt='' />
             <LinkList>
                 <li>
-                    <Link to='/'>ABOUT US</Link>
+                    <StyledLink to='/'>ABOUT US</StyledLink>
                 </li>
                 <li>
-                    <Link to=''>SERVICES</Link>
+                    <StyledLink to=''>SERVICES</StyledLink>
                 </li>
                 <li>
-                    <Link to=''>GIFT CARDS</Link>
+                    <StyledLink to=''>GIFT CARDS</StyledLink>
                 </li>
                 <li>
-                    <Link to=''>LOCATION</Link>
+                    <StyledLink to=''>LOCATION</StyledLink>
                 </li>
                 <li>
-                    <Link to=''>MY ACCOUNT</Link>
+                    <StyledLink to=''>MY ACCOUNT</StyledLink>
                 </li>
             </LinkList>
             <button>Book Now</button>
