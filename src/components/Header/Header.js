@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 
 const HeadWrapper = styled.div`
     height: ${props => props.headerHeight};
+    align-items: center;
     top: 0;
     position: sticky;
-    background-color: cadetblue;
+    background-color: ${props => props.headBackgroundColor};
     display: flex;
     transition: all .25s ease-in-out;
 `
@@ -32,7 +33,10 @@ export default class Header extends Component {
         super();
     
         this.state = {
-          height: '143px'
+          bacgkroundColor: 'transparent',
+          height: '143px',
+          shrink: false
+
         }
     }
 
@@ -50,21 +54,26 @@ export default class Header extends Component {
     
         if (distanceY > shrinkOn) {
           this.setState({
-              height: '80px'
+              bacgkroundColor: '#0090FF',
+              height: '80px',
+              shrink: true
           })
         } else {
           this.setState({
-              height: '143px'
+              bacgkroundColor: 'transparent',
+              height: '143px',
+              shrink: false
           })
         }
       }
 
 
     render() {
-        const { height } = this.state;
+        const { bacgkroundColor, height } = this.state;
+        // const Logos = !shrink ? Logo : 
         console.log(this.state, 'class');
         return (
-            <HeadWrapper headerHeight={height}>
+            <HeadWrapper headBackgroundColor={bacgkroundColor} headerHeight={height}>
                 <LogoImage src={Logo} alt='' />
                 <LinkList>
                     <li>
