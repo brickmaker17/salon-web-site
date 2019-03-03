@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Logo from '../../images/LogoAlpha.png';
+import LogoSymbol from '../../images/LogoAlphaWhite.png';
 import { Link } from "react-router-dom";
+import Transition from 'react-transition-group/Transition';
 
 // const test = window.addEventListener('scroll', ()=> console.log(Math.ceil(window.scrollY)));    
 
@@ -15,9 +17,15 @@ const HeadWrapper = styled.div`
     transition: all .25s ease-in-out;
 `
 const LogoImage = styled.img`
-    height: 68px;
-    width: 194px;
+    height: ${props => props.logoShrinks};
+    transition: opacity .25s height;
 `
+
+const Insignia = styled.img`
+    height: 50px;
+    transition: opacity 1s ease-in-out;
+`
+
 const LinkList = styled.ul`
     display: flex;
     justify-content: space-around;
@@ -35,7 +43,7 @@ export default class Header extends Component {
         this.state = {
           bacgkroundColor: 'transparent',
           height: '143px',
-          shrink: false
+          shrink: false,
 
         }
     }
@@ -56,25 +64,39 @@ export default class Header extends Component {
           this.setState({
               bacgkroundColor: '#0090FF',
               height: '80px',
-              shrink: true
+              shrink: true,
           })
         } else {
           this.setState({
               bacgkroundColor: 'transparent',
               height: '143px',
-              shrink: false
+              shrink: false,
           })
         }
       }
 
 
     render() {
-        const { bacgkroundColor, height } = this.state;
-        // const Logos = !shrink ? Logo : 
+        const { bacgkroundColor, height, shrink } = this.state;
+        const logoShrinks = !shrink ? '108px' : '50px'
+        let logos;
+        if(!shrink) {
+            logos = <LogoImage logoShrinks={logoShrinks} key='1' src={Logo} alt='Logo' />
+        } else {
+            logos = <Insignia key='2' src={LogoSymbol} alt='symbol' />
+            
+        }
+
         console.log(this.state, 'class');
         return (
             <HeadWrapper headBackgroundColor={bacgkroundColor} headerHeight={height}>
-                <LogoImage src={Logo} alt='' />
+                <Transition
+                    in={true}
+                    timeout={1000}
+                    unmountOnExit
+                >
+                    {logos}
+                </Transition>
                 <LinkList>
                     <li>
                         <StyledLink to='/'>ABOUT US</StyledLink>
