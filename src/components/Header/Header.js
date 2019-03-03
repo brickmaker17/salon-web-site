@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Logo from '../../images/LogoAlpha.png';
 import LogoSymbol from '../../images/LogoAlphaWhite.png';
 import { Link } from "react-router-dom";
-import Transition from 'react-transition-group/Transition';
+// import { CSSTransition } from 'react-transition-group'; 
 
-// const test = window.addEventListener('scroll', ()=> console.log(Math.ceil(window.scrollY)));    
+const morphIn = keyframes`
+    from {
+        opacity: 0;
+        height: 50px;
+    }
+    to {
+        opacity: 1;
+        height: 108px;
+    }
+`
+const morphOut = keyframes`
+    from {
+        opacity: 0;
+        height: 108px;
+    }
+    to {
+        opacity: 1;
+        height: 50px;
+    }
+`
 
 const HeadWrapper = styled.div`
     height: ${props => props.headerHeight};
@@ -17,13 +36,16 @@ const HeadWrapper = styled.div`
     transition: all .25s ease-in-out;
 `
 const LogoImage = styled.img`
+    top: 0;
+    position: sticky;
     height: ${props => props.logoShrinks};
-    transition: opacity .25s height;
+    animation: ${morphIn} 0.25s ease-out;
 `
 
 const Insignia = styled.img`
     height: 50px;
-    transition: opacity 1s ease-in-out;
+    animation: ${morphOut} 0.25s ease-out;
+
 `
 
 const LinkList = styled.ul`
@@ -44,6 +66,7 @@ export default class Header extends Component {
           bacgkroundColor: 'transparent',
           height: '143px',
           shrink: false,
+          show: true
 
         }
     }
@@ -65,12 +88,14 @@ export default class Header extends Component {
               bacgkroundColor: '#0090FF',
               height: '80px',
               shrink: true,
+              show: !this.state.show
           })
         } else {
           this.setState({
               bacgkroundColor: 'transparent',
               height: '143px',
               shrink: false,
+              show: false
           })
         }
       }
@@ -78,25 +103,23 @@ export default class Header extends Component {
 
     render() {
         const { bacgkroundColor, height, shrink } = this.state;
-        const logoShrinks = !shrink ? '108px' : '50px'
+        const logoShrinks = !shrink ? '108px' : '50px';
         let logos;
         if(!shrink) {
-            logos = <LogoImage logoShrinks={logoShrinks} key='1' src={Logo} alt='Logo' />
+            logos = 
+                <LogoImage logoShrinks={logoShrinks} key='1' src={Logo} alt='Logo' />
         } else {
-            logos = <Insignia key='2' src={LogoSymbol} alt='symbol' />
+            logos = 
+            
+                <Insignia key='2' src={LogoSymbol} alt='symbol' />
             
         }
 
         console.log(this.state, 'class');
         return (
             <HeadWrapper headBackgroundColor={bacgkroundColor} headerHeight={height}>
-                <Transition
-                    in={true}
-                    timeout={1000}
-                    unmountOnExit
-                >
+                
                     {logos}
-                </Transition>
                 <LinkList>
                     <li>
                         <StyledLink to='/'>ABOUT US</StyledLink>
