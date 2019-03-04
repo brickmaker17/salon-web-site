@@ -56,6 +56,7 @@ const LinkList = styled.ul`
 `
 const StyledLink = styled(Link)`
     text-decoration: none;
+    color: white;
 `
 
 export default class Header extends Component {
@@ -85,7 +86,7 @@ export default class Header extends Component {
     
         if (distanceY > shrinkOn) {
           this.setState({
-              bacgkroundColor: '#0090FF',
+              bacgkroundColor: 'black',
               height: '80px',
               shrink: true,
               show: !this.state.show
@@ -134,10 +135,9 @@ export default class Header extends Component {
                         <StyledLink to=''>LOCATION</StyledLink>
                     </li>
                     <li>
-                        <StyledLink to=''>MY ACCOUNT</StyledLink>
+                        <StyledLink to=''>BOOK</StyledLink>
                     </li>
                 </LinkList>
-                <button>Book Now</button>
             </HeadWrapper>
         );
     }

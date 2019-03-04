@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header/Header';
+import Bg from './images/Bg.png';
 import styled, { keyframes } from 'styled-components'
 
 const slideInFromLeft = keyframes`
@@ -12,7 +13,11 @@ const slideInFromLeft = keyframes`
 `
 
 const AppWrapper = styled.div`
-  background-color: #b2ccff;
+  background-image: url(${Bg});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center top;
+  background-size: cover;
   animation: .5s ${slideInFromLeft} ease-out;
   height: 200vh;
 `
