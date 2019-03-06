@@ -38,7 +38,7 @@ const HeadWrapper = styled.div`
 const LogoImage = styled.img`
     top: 0;
     position: sticky;
-    height: ${props => props.logoShrinks};
+    height: ${props => !props.shrink ? '108px' : '50px'};
     animation: ${morphIn} 0.25s ease-out;
 `
 
@@ -104,11 +104,11 @@ export default class Header extends Component {
 
     render() {
         const { bacgkroundColor, height, shrink } = this.state;
-        const logoShrinks = !shrink ? '108px' : '50px';
+
         let logos;
         if(!shrink) {
             logos = 
-                <LogoImage logoShrinks={logoShrinks} key='1' src={Logo} alt='Logo' />
+                <LogoImage shrink={shrink} key='1' src={Logo} alt='Logo' />
         } else {
             logos = 
             
