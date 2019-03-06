@@ -45,7 +45,6 @@ const LogoImage = styled.img`
 const Insignia = styled.img`
     height: 50px;
     animation: ${morphOut} 0.25s ease-out;
-
 `
 
 const LinkList = styled.ul`
