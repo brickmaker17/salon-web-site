@@ -72,7 +72,7 @@ export default class Header extends Component {
     }
 
      componentWillUnmount(){
-        window.removeEventListener('scroll', this.getWindowHeight);
+        window.removeEventListener('scroll', this.resizeHeaderOnScroll);
     }
 
     componentDidMount() {
@@ -115,7 +115,7 @@ export default class Header extends Component {
             
         }
 
-        console.log(this.state, 'class');
+        console.log(window.innerWidth, 'window');
         return (
             <HeadWrapper headBackgroundColor={bacgkroundColor} headerHeight={height}>
                 

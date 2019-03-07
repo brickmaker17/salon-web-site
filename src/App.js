@@ -33,8 +33,10 @@ export default class App extends Component {
     return (
       <AppWrapper>
         <Header />
+        <Route path='/' />
         <Route path='/about' component={AboutUs} />
         <Route path='/services' component={Services} />
+        <Route path='/location' component={Location} />
       </AppWrapper>
     );
   }
