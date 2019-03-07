@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Header from './components/Header/Header';
 import Bg from './images/Bg.png';
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components';
+import { Route } from 'react-router-dom';
+import AboutUs from './pages/aboutUs';
+import Services from './pages/services';
 
 const slideInFromLeft = keyframes`
   0% {
@@ -30,6 +33,8 @@ export default class App extends Component {
     return (
       <AppWrapper>
         <Header />
+        <Route path='/about' component={AboutUs} />
+        <Route path='/services' component={Services} />
       </AppWrapper>
     );
   }

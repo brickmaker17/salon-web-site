@@ -122,7 +122,7 @@ export default class Header extends Component {
                     {logos}
                 <LinkList>
                     <li>
-                        <StyledLink to='/'>ABOUT US</StyledLink>
+                        <StyledLink to='/about'>ABOUT US</StyledLink>
                     </li>
                     <li>
                         <StyledLink to=''>SERVICES</StyledLink>
