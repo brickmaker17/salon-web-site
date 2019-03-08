@@ -33,7 +33,9 @@ const HeadWrapper = styled.div`
     top: 0;
     position: sticky;
     background-color: ${props => props.headBackgroundColor};
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    margin-right: 26px;
     transition: all .25s ease-in-out;
 `
 const LogoImage = styled.img`
@@ -51,7 +53,11 @@ const Insignia = styled.img`
 const SmallNav = styled.div`
     display: flex;
     justify-content: center;
-    width: 100vw;
+`
+
+const StyledLink = styled(Link)`
+    display: flex;
+    justify-content: center;
 `
 
 export default class Header extends Component {
@@ -138,7 +144,7 @@ export default class Header extends Component {
         return (
             <HeadWrapper headBackgroundColor={bacgkroundColor} headerHeight={height}>
                 
-                    <Link to='/'>{logos}</Link>
+                    <StyledLink to='/'>{logos}</StyledLink>
                     {nav}
                
             </HeadWrapper>
