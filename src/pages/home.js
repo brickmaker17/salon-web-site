@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Location = () => {
+const Home = () => {
     return (
         <div>
-            Location
+            home
         </div>
     )
 }
 
-export default Location;
+export default Home;

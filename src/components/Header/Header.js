@@ -81,7 +81,7 @@ export default class Header extends Component {
 
       resizeHeaderOnScroll = () => {
         const distanceY = window.pageYOffset || document.documentElement.scrollTop,
-          shrinkOn = 200;
+          shrinkOn = 90;
     
         if (distanceY > shrinkOn) {
           this.setState({
@@ -119,7 +119,7 @@ export default class Header extends Component {
         return (
             <HeadWrapper headBackgroundColor={bacgkroundColor} headerHeight={height}>
                 
-                    {logos}
+                    <Link to='/'>{logos}</Link>
                 <LinkList>
                     <li>
                         <StyledLink to='/about'>ABOUT US</StyledLink>
@@ -131,7 +131,7 @@ export default class Header extends Component {
                         <StyledLink to=''>GIFT CARDS</StyledLink>
                     </li>
                     <li>
-                        <StyledLink to=''>LOCATION</StyledLink>
+                        <StyledLink to='/location'>LOCATION</StyledLink>
                     </li>
                     <li>
                         <StyledLink to=''>BOOK</StyledLink>

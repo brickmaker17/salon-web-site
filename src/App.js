@@ -5,6 +5,8 @@ import styled, { keyframes } from 'styled-components';
 import { Route } from 'react-router-dom';
 import AboutUs from './pages/aboutUs';
 import Services from './pages/services';
+import Home from './pages/home';
+import Location from './pages/location';
 
 const slideInFromLeft = keyframes`
   0% {
@@ -33,7 +35,7 @@ export default class App extends Component {
     return (
       <AppWrapper>
         <Header />
-        <Route path='/' />
+        <Route exact path='/' component={Home} />
         <Route path='/about' component={AboutUs} />
         <Route path='/services' component={Services} />
         <Route path='/location' component={Location} />
