@@ -76,6 +76,9 @@ export default class Header extends Component {
     componentDidMount() {
         window.addEventListener('scroll', this.resizeHeaderOnScroll);
         window.addEventListener('resize', this.resizeHeaderOnMobile);
+        const width = window.innerWidth;
+
+        width < 786 ? this.setState({ mobile: true }) : this.setState({ mobile: false });
     }
 
       resizeHeaderOnScroll = () => {
