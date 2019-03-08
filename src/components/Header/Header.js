@@ -3,7 +3,8 @@ import styled, { keyframes } from 'styled-components';
 import Logo from '../../images/LogoAlpha.png';
 import LogoSymbol from '../../images/LogoAlphaWhite.png';
 import { Link } from "react-router-dom";
-// import { CSSTransition } from 'react-transition-group'; 
+import Navigation from '../Navigation/Navigation';
+import { FaBars } from "react-icons/fa";
 
 const morphIn = keyframes`
     from {
@@ -47,15 +48,10 @@ const Insignia = styled.img`
     animation: ${morphOut} 0.25s ease-out;
 `
 
-const LinkList = styled.ul`
+const SmallNav = styled.div`
     display: flex;
-    justify-content: space-around;
-    list-style-type: none;
-    width: 100%;
-`
-const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: white;
+    justify-content: center;
+    width: 100vw;
 `
 
 export default class Header extends Component {
@@ -65,6 +61,7 @@ export default class Header extends Component {
         this.state = {
           bacgkroundColor: 'transparent',
           height: '143px',
+          mobile: false,
           shrink: false,
           show: true
 
@@ -73,10 +70,12 @@ export default class Header extends Component {
 
      componentWillUnmount(){
         window.removeEventListener('scroll', this.resizeHeaderOnScroll);
+        window.removeEventListener('resize', this.resizeHeaderOnMobile);
     }
 
     componentDidMount() {
         window.addEventListener('scroll', this.resizeHeaderOnScroll);
+        window.addEventListener('resize', this.resizeHeaderOnMobile);
     }
 
       resizeHeaderOnScroll = () => {
@@ -100,11 +99,18 @@ export default class Header extends Component {
         }
       }
 
+      resizeHeaderOnMobile = () => {
+        const width = window.innerWidth;
+
+        width < 786 ? this.setState({ mobile: true }) : this.setState({ mobile: false });
+      }
+
 
     render() {
-        const { bacgkroundColor, height, shrink } = this.state;
+        const { bacgkroundColor, height, mobile, shrink } = this.state;
 
         let logos;
+        let nav;
         if(!shrink) {
             logos = 
                 <LogoImage shrink={shrink} key='1' src={Logo} alt='Logo' />
@@ -115,28 +121,23 @@ export default class Header extends Component {
             
         }
 
-        console.log(window.innerWidth, 'window');
+        if(mobile) {
+            nav =
+                <SmallNav>
+                    <FaBars />
+                </SmallNav>
+        } else {
+            nav =
+                <Navigation />
+        }
+
+        console.log(this.state.mobile, 'mobile');
         return (
             <HeadWrapper headBackgroundColor={bacgkroundColor} headerHeight={height}>
                 
                     <Link to='/'>{logos}</Link>
-                <LinkList>
-                    <li>
-                        <StyledLink to='/about'>ABOUT US</StyledLink>
-                    </li>
-                    <li>
-                        <StyledLink to=''>SERVICES</StyledLink>
-                    </li>
-                    <li>
-                        <StyledLink to=''>GIFT CARDS</StyledLink>
-                    </li>
-                    <li>
-                        <StyledLink to='/location'>LOCATION</StyledLink>
-                    </li>
-                    <li>
-                        <StyledLink to=''>BOOK</StyledLink>
-                    </li>
-                </LinkList>
+                    {nav}
+               
             </HeadWrapper>
         );
     }
