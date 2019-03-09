@@ -33,10 +33,14 @@ const HeadWrapper = styled.div`
     top: 0;
     position: sticky;
     background-color: ${props => props.headBackgroundColor};
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 20px;
     margin-right: 26px;
     transition: all .25s ease-in-out;
+
+    @media (max-width: 786px) {
+        display: grid;
+    }
 `
 const LogoImage = styled.img`
     top: 0;
@@ -61,10 +65,7 @@ const StyledLink = styled(Link)`
 `
 
 export default class Header extends Component {
-    constructor() {
-        super();
-    
-        this.state = {
+        state = {
           bacgkroundColor: 'transparent',
           height: '143px',
           mobile: false,
@@ -72,7 +73,6 @@ export default class Header extends Component {
           show: true
 
         }
-    }
 
      componentWillUnmount(){
         window.removeEventListener('scroll', this.resizeHeaderOnScroll);
