@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Logo from '../../images/LogoAlpha.png';
+import Logo from '../../images/LogoAlphaWhiteText.png';
 import LogoSymbol from '../../images/LogoAlphaWhite.png';
 import { Link } from "react-router-dom";
 import Navigation from '../Navigation/Navigation';

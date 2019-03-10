@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
+const urlBooking = 'https://squareup.com/appointments/book/CZK4CPP5N8PHB/mr-e-z-hair-desgin-cutz-clolorz-curlz-west-valley-city-ut';
+
 const LinkList = styled.ul`
     display: flex;
     justify-content: space-around;
@@ -9,6 +11,11 @@ const LinkList = styled.ul`
     width: 100%;
 `
 const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: white;
+`
+
+const StyledExternalLink = styled.a`
     text-decoration: none;
     color: white;
 `
@@ -31,7 +38,7 @@ const Navigation = () => {
                 <StyledLink to='/location'>LOCATION</StyledLink>
             </li>
             <li>
-                <StyledLink to=''>BOOK</StyledLink>
+                <StyledExternalLink href={urlBooking}>BOOK</StyledExternalLink>
             </li>
         </LinkList>
     )
