@@ -29,7 +29,7 @@ const Navigation = () => {
                 <StyledLink to='/about'>ABOUT US</StyledLink>
             </li>
             <li>
-                <StyledLink to=''>SERVICES</StyledLink>
+                <StyledLink to='/services'>SERVICES</StyledLink>
             </li>
             <li>
                 <StyledLink to=''>GIFT CARDS</StyledLink>

@@ -24,21 +24,29 @@ const AppWrapper = styled.div`
   background-position: center top;
   background-size: cover;
   animation: .5s ${slideInFromLeft} ease-out;
-  height: 200vh;
 `
 
+const Container = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: 170px 47px;
+`;
 
 
 export default class App extends Component {
+
+  
 
   render() {
     return (
       <AppWrapper>
         <Header />
-        <Route exact path='/' component={Home} />
-        <Route path='/about' component={AboutUs} />
-        <Route path='/services' component={Services} />
-        <Route path='/location' component={Location} />
+        <Container>
+          <Route exact path='/' component={Home} />
+          <Route path='/about' component={AboutUs} />
+          <Route path='/services' component={Services} />
+          <Route path='/location' component={Location} />
+        </Container>
       </AppWrapper>
     );
   }

@@ -1,9 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
+
 
 const AboutUs = () => {
     return (
         <div>
-            <h1>Welcome to Mr. E’z Hair Design</h1>
             <p>
                 Call 801.580.3297
                 Whether you’re looking for a completely new style or want to enhance your

@@ -28,10 +28,11 @@ const morphOut = keyframes`
 `
 
 const HeadWrapper = styled.div`
-    height: ${props => props.headerHeight};
+    height: ${props => !props.shrink ? '143px' : '80px'};
+    width: 100%;
     align-items: center;
     top: 0;
-    position: sticky;
+    position: fixed;
     background-color: ${props => props.headBackgroundColor};
     display: flex;
     grid-template-columns: 1fr 20px;
@@ -67,14 +68,12 @@ const StyledLink = styled(Link)`
 export default class Header extends Component {
         state = {
           bacgkroundColor: 'transparent',
-          height: '143px',
           mobile: false,
           shrink: false,
-          show: true
 
         }
 
-     componentWillUnmount(){
+    componentWillUnmount(){
         window.removeEventListener('scroll', this.resizeHeaderOnScroll);
         window.removeEventListener('resize', this.resizeHeaderOnMobile);
     }
@@ -88,22 +87,17 @@ export default class Header extends Component {
     }
 
       resizeHeaderOnScroll = () => {
-        const distanceY = window.pageYOffset || document.documentElement.scrollTop,
-          shrinkOn = 90;
-    
-        if (distanceY > shrinkOn) {
+        const distanceY = Math.floor(window.pageYOffset) || Math.floor(document.documentElement.scrollTop);
+
+        if (distanceY >= 90 ) {
           this.setState({
               bacgkroundColor: 'black',
-              height: '80px',
               shrink: true,
-              show: !this.state.show
           })
         } else {
           this.setState({
               bacgkroundColor: 'transparent',
-              height: '143px',
               shrink: false,
-              show: false
           })
         }
       }
@@ -116,7 +110,7 @@ export default class Header extends Component {
 
 
     render() {
-        const { bacgkroundColor, height, mobile, shrink } = this.state;
+        const { bacgkroundColor, mobile, shrink } = this.state;
 
         let logos;
         let nav;
@@ -138,11 +132,9 @@ export default class Header extends Component {
         } else {
             nav =
                 <Navigation />
-        }
-
-        console.log(this.state.mobile, 'mobile');
+        }    
         return (
-            <HeadWrapper headBackgroundColor={bacgkroundColor} headerHeight={height}>
+            <HeadWrapper headBackgroundColor={bacgkroundColor} shrink={shrink}>
                 
                     <StyledLink to='/'>{logos}</StyledLink>
                     {nav}
