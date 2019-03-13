@@ -38,9 +38,12 @@ const HeadWrapper = styled.div`
     grid-template-columns: 1fr 20px;
     margin-right: 26px;
     transition: all .25s ease-in-out;
+    z-index: 1;
 
     @media (max-width: 786px) {
         display: grid;
+        z-index: 1;
+
     }
 `
 const LogoImage = styled.img`

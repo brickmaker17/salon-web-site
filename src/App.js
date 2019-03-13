@@ -28,7 +28,6 @@ const AppWrapper = styled.div`
 
 const Container = styled.div`
     display: flex;
-    justify-content: center;
     padding: 170px 47px;
 `;
 
