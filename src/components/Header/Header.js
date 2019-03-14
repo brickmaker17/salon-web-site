@@ -35,13 +35,14 @@ const HeadWrapper = styled.div`
     position: fixed;
     background-color: ${props => props.headBackgroundColor};
     display: flex;
-    grid-template-columns: 1fr 20px;
     margin-right: 26px;
     transition: all .25s ease-in-out;
     z-index: 1;
 
     @media (max-width: 786px) {
         display: grid;
+        grid-template-columns: 1fr 60px;
+
         z-index: 1;
 
     }
@@ -51,6 +52,11 @@ const LogoImage = styled.img`
     position: sticky;
     height: ${props => !props.shrink ? '108px' : '50px'};
     animation: ${morphIn} 0.25s ease-out;
+
+    @media (max-width: 411px) {
+        height: ${props => !props.shrink ? '24vw' : '50px'};
+
+    }
 `
 
 const Insignia = styled.img`
@@ -66,6 +72,11 @@ const SmallNav = styled.div`
 const StyledLink = styled(Link)`
     display: flex;
     justify-content: center;
+    margin-left: 28px;
+
+    @media (max-width: 786px) {
+        margin: 0;
+    }
 `
 
 export default class Header extends Component {
