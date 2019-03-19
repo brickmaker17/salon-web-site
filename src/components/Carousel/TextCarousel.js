@@ -33,14 +33,15 @@ const Wrapper = styled.div`
     height: 200px;
     overflow: hidden;
     transition-duration: 2000ms;
+    transition-property: transform;
+
 `;
 
 const Container = styled.div`
-    transform: translate3d(0px, 0px, 0px);
     height: 200px;
     opacity: 1;
     transition-duration: 2000ms;
-    animation: ${textSlider} 10s ease-in-out;
+    transform: translate3d(${props => props.move});
 
 
     @media (max-width: 786px) {
