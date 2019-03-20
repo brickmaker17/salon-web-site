@@ -7,6 +7,7 @@ import AboutUs from './pages/aboutUs';
 import Services from './pages/services';
 import Home from './pages/home';
 import Location from './pages/location';
+import Navigation from './components/Navigation/Navigation';
 
 const slideInFromLeft = keyframes`
   0% {
@@ -40,6 +41,11 @@ export default class App extends Component {
     return (
       <AppWrapper>
         <Header />
+        <Navigation
+          position='fixed'
+          direction='column'
+          zIndex='100'
+        />
         <Container>
           <Route exact path='/' component={Home} />
           <Route path='/about' component={AboutUs} />
