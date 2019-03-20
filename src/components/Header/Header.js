@@ -140,13 +140,13 @@ export default class Header extends Component {
 
         if(mobile) {
             nav =
-                <SmallNav>
+                <SmallNav onClick={this.props.drawerClickHandler}>
                     <FaBars />
                 </SmallNav>
         } else {
             nav =
                 <Navigation />
-        }    
+        }
         return (
             <HeadWrapper headBackgroundColor={bacgkroundColor} shrink={shrink}>
                 

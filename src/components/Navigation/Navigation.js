@@ -6,11 +6,16 @@ const urlBooking = 'https://squareup.com/appointments/book/CZK4CPP5N8PHB/mr-e-z-
 
 const LinkList = styled.ul`
     position: ${props => props.position};
+    box-shadow: ${props => props.boxShadow};
+    right: 0;
+    margin: 0;
     display: flex;
     flex-direction: ${props => props.direction};
     justify-content: space-around;
     list-style-type: none;
-    width: 100%;
+    max-width: ${props => props.maxWidth};
+    width: ${props => props.width || '100%'};
+    height: ${props => props.height || 'auto'};
     background: ${props => props.background};
     z-index: ${props => props.zIndex};
 `
@@ -23,31 +28,39 @@ const StyledExternalLink = styled.a`
     text-decoration: none;
     color: white;
 `
+const ListItem =styled.li`
+    text-align: center;
+`
 
 
 const Navigation = props => {
-    const { direction, zIndex, position } = props;
+    const { background, boxShadow, direction, maxWidth, height, zIndex, position, width } = props;
     return (
         <LinkList
+            background={background}
+            boxShadow={boxShadow}
+            maxWidth={maxWidth}
+            height={height}
             position={position}
             direction={direction}
+            width={width}
             zIndex={zIndex}
         >
-            <li>
+            <ListItem>
                 <StyledLink to='/about'>ABOUT US</StyledLink>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
                 <StyledLink to='/services'>SERVICES</StyledLink>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
                 <StyledLink to=''>GIFT CARDS</StyledLink>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
                 <StyledLink to='/location'>LOCATION</StyledLink>
-            </li>
-            <li>
+            </ListItem>
+            <ListItem>
                 <StyledExternalLink href={urlBooking}>BOOK</StyledExternalLink>
-            </li>
+            </ListItem>
         </LinkList>
     );
 };

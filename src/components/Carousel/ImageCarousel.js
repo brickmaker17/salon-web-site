@@ -35,15 +35,12 @@ export default function ImageCarousel() {
                 >
                     <Container>
                         <img src={Woman} alt='' />
-                        <p className="legend">Legend 1</p>
                     </Container>
                     <Container>
                         <img src={Guy} alt='' />
-                        <p className="legend">Legend 2</p>
                     </Container>
                     <Container>
                         <img src={Woman1} alt='' />
-                        <p className="legend">Legend 3</p>
                     </Container>
                 </Carousel>
             </Fragment>

@@ -8,6 +8,7 @@ import Services from './pages/services';
 import Home from './pages/home';
 import Location from './pages/location';
 import Navigation from './components/Navigation/Navigation';
+import Backdrop from './components/Backdrop/Backdrop';
 
 const slideInFromLeft = keyframes`
   0% {
@@ -34,18 +35,34 @@ const Container = styled.div`
 
 
 export default class App extends Component {
+  state = {
+    sideDrawerOpen: false
+  };
+
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return {sideDrawerOpen: !prevState.sideDrawerOpen};
+    });
+  };
 
   
 
   render() {
+    const { sideDrawerOpen } = this.state;
     return (
       <AppWrapper>
-        <Header />
-        <Navigation
+        <Header drawerClickHandler={this.drawerToggleClickHandler} />
+        {sideDrawerOpen? <Navigation
+          boxShadow='-3px 0px 5px rgba(0, 0, 0, 0.5)'
+          maxWidth='400px'
+          background='black'
+          height='100%'
           position='fixed'
           direction='column'
-          zIndex='100'
-        />
+          width='70%'
+          zIndex='200'
+        /> : null}
+        {sideDrawerOpen? <Backdrop click={this.drawerToggleClickHandler} /> : null}
         <Container>
           <Route exact path='/' component={Home} />
           <Route path='/about' component={AboutUs} />
