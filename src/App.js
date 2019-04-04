@@ -20,6 +20,7 @@ const slideInFromLeft = keyframes`
 `
 
 const AppWrapper = styled.div`
+  height: 100vh;
   background-image: url(${Bg});
   background-repeat: no-repeat;
   background-attachment: fixed;
