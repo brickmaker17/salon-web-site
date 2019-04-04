@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ImageCarousel from '../components/Carousel/ImageCarousel';
 
 const Container = styled.div`
+    height: 75vh;
     justify-content: flex-start;
     padding-left: 9vw;
     

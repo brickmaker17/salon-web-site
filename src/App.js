@@ -20,7 +20,6 @@ const slideInFromLeft = keyframes`
 `
 
 const AppWrapper = styled.div`
-  height: 100vh;
   background-image: url(${Bg});
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -50,6 +49,7 @@ export default class App extends Component {
 
   render() {
     const { sideDrawerOpen } = this.state;
+    console.log(window.location.pathname, 'location');
     return (
       <AppWrapper>
         <Header drawerClickHandler={this.drawerToggleClickHandler} />
